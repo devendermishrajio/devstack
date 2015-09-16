@@ -1,0 +1,29 @@
+---
+- local:
+     git_base: "https://github.com"
+     user_name: "jiocloudcompute"
+     default_branch: compute_team
+     repos:
+     - name: nova
+     - name: glance
+     - name: osloctx
+       git: oslo.context
+     - name: osloservice
+       git: oslo.service
+     - name: futurist
+     - name: debtcollector
+     - name: oslomid
+       git: oslo.middleware
+     - name: oslomsg
+       git: oslo.messaging
+     - name: oslolog
+       git: oslo.log
+     - name: novaclient
+       git: python-novaclient
+     - name: glanceclient
+       git: python-glanceclient
+     - name: neutronclient
+       git: python-neutronclient
+     - name: openstackclient
+       git: python-openstackclient
+

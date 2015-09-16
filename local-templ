@@ -1,0 +1,35 @@
+[[local|localrc]]
+GIT_BASE=https://github.com
+{% for repo in local.repos %}
+{%- if repo.git is defined -%}
+{%- set git_repo_name = repo.git -%}
+{% else %}
+{%- set git_repo_name = repo.name -%}
+{% endif %}
+{%- if repo.git_base is defined -%}
+{%- set git_base = repo.git_base -%}
+{% else %}
+{%- set git_base = local.git_base -%}
+{% endif %}
+{%- if repo.user_name is defined -%}
+{%- set git_user = repo.user_name -%}
+{% else %}
+{%- set git_user = local.user_name -%}
+{% endif %}
+{%- if repo.branch is defined -%}
+{%- set git_branch = repo.branch -%}
+{% else %}
+{%- set git_branch = local.default_branch -%}
+{% endif %}
+{{ repo.name|upper() }}_REPO={{ git_base }}/{{ git_user }}/{{ git_repo_name }}
+{{ repo.name|upper() }}_BRANCH={{ git_branch }}
+{% endfor %}
+
+
+{% if local.service_token is defined %}SERVICE_TOKEN={{ local.service_token }}{% else %}SERVICE_TOKEN=azertytoken{% endif %}
+{% if local.admin_password is defined %}ADMIN_PASSWORD={{ local.admin_password }}{% else %}ADMIN_PASSWORD=nomoresecrete{% endif %}
+{% if local.db_password is defined %}DATABASE_PASSWORD={{ local.db_password }}{% else %}DATABASE_PASSWORD=stackdb{% endif %}
+{% if local.rabbit_password is defined %}RABBIT_PASSWORD={{ local.rabbit_password }}{% else %}RABBIT_PASSWORD=stackqueue{% endif %}
+{% if local.service_password is defined %}SERVICE_PASSWORD={{ local.service_password }}{% else %}SERVICE_PASSWORD=$ADMIN_PASSWORD{% endif %}
+OS_USERNAME="demo"
+OS_PASSWORD="demo2"
