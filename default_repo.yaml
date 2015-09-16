@@ -1,0 +1,12 @@
+---
+- local:
+     git_base: "https://github.com"
+     user_name: "jiocloudcompute"
+     default_branch: compute_team
+     repos:
+     - name: nova
+     - name: glance
+     repo_clients:
+     - name: novaclient
+     - name: glanceclient
+

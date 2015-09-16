@@ -1,0 +1,20 @@
+[[local|localrc]]
+
+GIT_BASE={{ local.git_base }}
+JCS_USER_NAME={{ local.user_name }}
+
+{% for repo in local.repos %}{{ repo.name|upper() }}_REPO=${GIT_BASE}/${JCS_USER_NAME}/{{ repo.name }}
+{% if repo.branch is defined %}{{ repo.name|upper() }}_BRANCH={{ repo.branch }}{% else %}{{ repo.name|upper() }}_BRANCH={{ local.default_branch }}{% endif %}
+{% endfor %}
+
+{% for repo in local.repo_clients %}{{ repo.name|upper() }}_REPO=${GIT_BASE}/${JCS_USER_NAME}/python-{{ repo.name }}
+{% if repo.branch is defined %}{{ repo.name|upper() }}_BRANCH={{ repo.branch }}{% else %}{{ repo.name|upper() }}_BRANCH={{ local.default_branch }}
+{% endif %}
+{% endfor %}
+
+{% if local.service_token is defined %}SERVICE_TOKEN={{ local.service_token }}{% else %}SERVICE_TOKEN=azertytoken{% endif %}
+{% if local.admin_password is defined %}ADMIN_PASSWORD={{ local.admin_password }}{% else %}ADMIN_PASSWORD=nomoresecrete{% endif %}
+{% if local.db_password is defined %}DATABASE_PASSWORD={{ local.db_password }}{% else %}DATABASE_PASSWORD=stackdb{% endif %}
+{% if local.rabbit_password is defined %}RABBIT_PASSWORD={{ local.rabbit_password }}{% else %}RABBIT_PASSWORD=stackqueue{% endif %}
+{% if local.service_password is defined %}SERVICE_PASSWORD={{ local.service_password }}{% else %}SERVICE_PASSWORD=$ADMIN_PASSWORD{% endif %}
+
