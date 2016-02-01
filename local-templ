@@ -1,6 +1,11 @@
 [[local|localrc]]
 GIT_BASE=https://github.com
 LIBS_FROM_GIT=python-glanceclient,python-novaclient,python-openstackclient,python-neutronclient,python-keystoneclient,python-cinderclient
+disable_service rabbit
+disable_service qpid
+enable_service zeromq
+ZEROMQ_MATCHMAKER=${ZEROMQ_MATCHMAKER:-"redis"}
+
 {% for repo in local.repos %}
 {%- if repo.git is defined -%}
 {%- set git_repo_name = repo.git -%}
