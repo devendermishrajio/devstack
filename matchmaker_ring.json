@@ -1,0 +1,24 @@
+{
+  "cert": [
+    "localhost"
+  ],
+  "consoleauth": [
+    "localhost"
+  ],
+  "conductor": [
+    "localhost"
+  ],
+  "cinder-scheduler": [
+    "localhost"
+  ],
+  "cinder-volume": [
+    "localhost"
+  ],
+  "scheduler": [
+    "localhost"
+  ],
+  "compute": [
+    "localhost"
+  ]
+}
+

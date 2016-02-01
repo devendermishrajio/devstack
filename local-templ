@@ -1,4 +1,6 @@
 [[local|localrc]]
+sudo install -d -o stack /etc/oslo
+cp matchmaker_ring.json /etc/oslo
 GIT_BASE=https://github.com
 LIBS_FROM_GIT=python-glanceclient,python-novaclient,python-openstackclient,python-neutronclient,python-keystoneclient,python-cinderclient
 disable_service rabbit
